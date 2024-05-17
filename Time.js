@@ -1,8 +1,17 @@
 const { TimeFormatCodes } = require('./format_codes');
 
+/**
+ * Class representing a time.
+ */
 class Time {
-    constructor(hours, minutes) {
-        if ((hours === undefined || minutes === undefined) && (hours !== undefined || minutes !== undefined)) {
+    /**
+     * Create a time.
+     * @param {number} hours - The hours.
+     * @param {number} minutes - The minutes.
+     * @param {number} seconds - The seconds.
+     */
+    constructor(hours, minutes, seconds) {
+        if ((hours === undefined || minutes === undefined) && (hours !== undefined || minutes !== undefined || seconds !== undefined)) {
             throw new Error('Hours and minutes must both be provided');
         }
     
@@ -16,12 +25,19 @@ class Time {
         this.dateObj.setSeconds(this.seconds);
     }
 
-    // get current time
+    /**
+     * Get the current time.
+     * @return {Time} An instance of Time representing the current time.
+     */
     static time() {
         return new Time();
     }
 
-    // get time as a string
+    /**
+     * Get the time as a string.
+     * @param {string} format - The format to use for the time string.
+     * @return {string} The time as a string.
+     */
     getTimeString(format = TimeFormatCodes.HOUR_24 + ':' + TimeFormatCodes.ZERO_PADDED_MINUTE + ':' + TimeFormatCodes.ZERO_PADDED_SECOND) {        
         let formattedTime = format
             .replace(TimeFormatCodes.HOUR_24, this.hours)
@@ -29,8 +45,8 @@ class Time {
             .replace(TimeFormatCodes.ZERO_PADDED_MINUTE, String(this.minutes).padStart(2, '0'))
             .replace(TimeFormatCodes.ZERO_PADDED_SECOND, String(this.seconds).padStart(2, '0'))
             .replace(TimeFormatCodes.AM_PM, this.hours >= 12 ? 'PM' : 'AM')
-            .replace(TimeFormatCodes.MICROSECONDS, dateObj.getMilliseconds() * 1000)
-            .replace(TimeFormatCodes.UTC_OFFSET, -dateObj.getTimezoneOffset())
+            .replace(TimeFormatCodes.MICROSECONDS, this.dateObj.getMilliseconds() * 1000)
+            .replace(TimeFormatCodes.UTC_OFFSET, -this.dateObj.getTimezoneOffset())
             .replace(TimeFormatCodes.TIME_ZONE_NAME, Intl.DateTimeFormat().resolvedOptions().timeZone);
 
         return formattedTime;

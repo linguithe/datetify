@@ -1,6 +1,15 @@
 const { DateFormatCodes } = require('./format_codes');
 
+/**
+ * Class representing a date.
+ */
 class D8 {
+    /**
+     * Create a date.
+     * @param {number} year - The year.
+     * @param {number} month - The month.
+     * @param {number} day - The day.
+     */
     constructor(year, month, day) {
         if ((year === undefined || month === undefined || day === undefined) && (year !== undefined || month !== undefined || day !== undefined)) {
             throw new Error('Year, month, and day must all be provided');
@@ -14,12 +23,19 @@ class D8 {
         this.dayOfWeek = this.dateObj.getDay();
     }
 
-    // get current date
+    /**
+     * Get the current date.
+     * @return {D8} An instance of D8 representing the current date.
+     */
     static date() {
         return new D8();
     }
 
-    // get date as a string
+    /**
+     * Get the date as a string.
+     * @param {string} format - The format to use for the date string. Defaults to 'DD-MM-YYYY'.
+     * @return {string} The date as a string.
+     */
     getDateString(format = DateFormatCodes.ZERO_PADDED_DAY + '-' + DateFormatCodes.ZERO_PADDED_MONTH + '-' + DateFormatCodes.FULL_YEAR) {
         let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let monthAbbrs = monthNames.map(name => name.substring(0, 3));
