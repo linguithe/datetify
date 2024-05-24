@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/linguithe/datetify/compare/v0.1.4...v0.2.0) (2024-05-24)
+
+
+### Features
+
+* switched to semantic-release for changelog and versioning ([5ded964](https://github.com/linguithe/datetify/commit/5ded9642651b48b14d1a9a001137529551013016))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
