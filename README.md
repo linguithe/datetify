@@ -1,3 +1,4 @@
+# TODO
 Parsing Dates: Your library should be able to parse dates from strings in various formats.
 
 Formatting Dates: Provide functions to format dates into common string formats like "YYYY-MM-DD", "MM/DD/YYYY", "DD-MM-YYYY", "Month Day, Year", etc.
@@ -9,3 +10,13 @@ Date Comparisons: Functions to compare dates can be very useful. This could incl
 Time Zone Support: Handling time zones can be one of the trickiest parts of date manipulation. Your library could provide functions to convert dates between different time zones.
 
 Localization: Consider providing support for different languages and locales. This could include localized month names, day names, etc.
+
+# Update changelog and publish updates
+```shell
+git commit -m "fix: "
+git commit -m "feat: "
+git commit -m "BREAKING CHANGE: "
+
+npm run release
+git push --follow-tags
+```

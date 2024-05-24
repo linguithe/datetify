@@ -3,7 +3,7 @@ const DateFormatCodes = {
     TWO_DIGIT_YEAR: '%y',
     FULL_MONTH_NAME: '%B',
     ABBREVIATED_MONTH_NAME: '%b',
-    ZERO_PADDED_MONTH: '%m',
+    MONTH_AS_NUMBER: '%m',
     ZERO_PADDED_DAY: '%d',
     FULL_WEEKDAY_NAME: '%A',
     ABBREVIATED_WEEKDAY_NAME: '%a',
@@ -24,7 +24,18 @@ const TimeFormatCodes = {
     TIME_ZONE_NAME: '%Z',
 }
 
+const CodePrefix = '%';
+
+const DefaultFormat = DateFormatCodes.ZERO_PADDED_DAY + '-' + 
+                        DateFormatCodes.MONTH_AS_NUMBER + '-' + 
+                        DateFormatCodes.FULL_YEAR + ' ' + 
+                        TimeFormatCodes.HOUR_24 + ':' + 
+                        TimeFormatCodes.ZERO_PADDED_MINUTE + ':' + 
+                        TimeFormatCodes.ZERO_PADDED_SECOND
+
 module.exports = {
     DateFormatCodes,
     TimeFormatCodes,
+    CodePrefix,
+    DefaultFormat
 }

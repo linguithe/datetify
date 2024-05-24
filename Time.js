@@ -11,18 +11,16 @@ class Time {
      * @param {number} seconds - The seconds.
      */
     constructor(hours, minutes, seconds) {
-        if ((hours === undefined || minutes === undefined) && (hours !== undefined || minutes !== undefined || seconds !== undefined)) {
-            throw new Error('Hours and minutes must both be provided');
+        const date = new Date();
+        if (hours === undefined && minutes === undefined && seconds === undefined) {
+            this.hours = date.getHours();
+            this.minutes = date.getMinutes();
+            this.seconds = date.getSeconds();
+        } else {
+            this.hours = hours !== undefined ? hours : 0; // Default to 0
+            this.minutes = minutes !== undefined ? minutes : 0; // Default to 0
+            this.seconds = seconds !== undefined ? seconds : 0; // Default to 0
         }
-    
-        this.hours = hours !== undefined ? hours : new Date().getHours();
-        this.minutes = minutes !== undefined ? minutes : new Date().getMinutes();
-        this.seconds = seconds !== undefined ? seconds : 0;
-
-        this.dateObj = new Date();
-        this.dateObj.setHours(this.hours);
-        this.dateObj.setMinutes(this.minutes);
-        this.dateObj.setSeconds(this.seconds);
     }
 
     /**
@@ -50,6 +48,21 @@ class Time {
             .replace(TimeFormatCodes.TIME_ZONE_NAME, Intl.DateTimeFormat().resolvedOptions().timeZone);
 
         return formattedTime;
+    }
+
+    setHours(hours) {
+        if (hours < 0 || hours > 23) throw new Error('Invalid hours! Must be between 0 and 23');
+        this.dateObj.setHours(hours);
+    }
+
+    setMinutes(minutes) {
+        if (minutes < 0 || minutes > 59) throw new Error('Invalid minutes! Must be between 0 and 59');
+        this.dateObj.setMinutes(minutes);
+    }
+
+    setSeconds(seconds) {
+        if (seconds < 0 || seconds > 59) throw new Error('Invalid seconds! Must be between 0 and 59');
+        this.dateObj.setSeconds(seconds);
     }
 }
 

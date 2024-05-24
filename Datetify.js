@@ -1,5 +1,7 @@
 const Time = require('./Time');
 const D8 = require('./D8');
+const Utils = require('./datetify_utils');
+const { DefaultFormat } = require('./format_codes');
 
 class Datetify {
     /**
@@ -11,17 +13,14 @@ class Datetify {
      * @param {number} seconds - The seconds.
      */
     constructor(year=new D8().year,
-                month=new D8().month,
-                day=new D8().day,
-                hours=new Time().hours,
-                minutes=new Time().minutes,
-                seconds=new Time().seconds) {
-        if ((year === undefined || month === undefined || day === undefined) && 
-            (hours === undefined || minutes === undefined) && 
-            (year !== undefined || month !== undefined || day !== undefined || hours !== undefined || minutes !== undefined)) {
-            throw new Error('Either year, month, and day or hours and minutes must be provided, or none should be provided');
-        }
-        
+            month=0,
+            day=1,
+            hours=0,
+            minutes=0,
+            seconds=0) {
+
+        Utils.validateParams(arguments, 'number', 'number', 'number', 'number', 'number', 'number');
+
         this.year = year;
         this.month = month;
         this.day = day;
@@ -62,6 +61,21 @@ class Datetify {
      */
     static timestring(format) {
         return new Time().getTimeString(format);
+    }
+
+    /**
+     * Format the input based on the provided format string. If input is an instance of Datetify, it will be formatted. If input is a string, it will be parsed.
+     * @param {Datetify|string} input - The input to format. Can be an instance of Datetify or a string.
+     * @param {string} format - The format string.
+     */
+    static format(input, format=DefaultFormat) {
+        if (input instanceof Datetify) {
+            Utils.validateParams(arguments, Datetify, 'string');
+            Utils.strftime(input, format);
+        } else if (input instanceof String) {
+            Utils.validateParams(arguments, 'string', 'string');
+            Utils.strptime(input, format);
+        }
     }
 }
 
