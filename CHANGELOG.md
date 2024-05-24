@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/linguithe/datetify/compare/v0.2.0...v0.2.1) (2024-05-24)
+
+
+### Bug Fixes
+
+* update readme and moved developer notes to todo ([6607087](https://github.com/linguithe/datetify/commit/660708724d63d594b14cc3539c1e8e16249c6dd5))
+
 # [0.2.0](https://github.com/linguithe/datetify/compare/v0.1.4...v0.2.0) (2024-05-24)
 
 
