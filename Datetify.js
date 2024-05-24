@@ -43,6 +43,7 @@ class Datetify {
      * @return {string} The date as a string.
      */
     static datestring(format) {
+        Utils.validateParams(arguments, 'string');
         return Datetify.date().getDateString(format);
     }
 
@@ -60,6 +61,7 @@ class Datetify {
      * @return {string} The time as a string.
      */
     static timestring(format) {
+        Utils.validateParams(arguments, 'string');
         return new Time().getTimeString(format);
     }
 
