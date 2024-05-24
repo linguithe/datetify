@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/linguithe/datetify/compare/v0.1.3...v0.1.4) (2024-05-24)
+
+
+### Features
+
+* updated function validation for Datetify class ([ded15f1](https://github.com/linguithe/datetify/commit/ded15f13f4422eafd284cd56797c6a0ac9989ad9))
+
 ### [0.1.3](https://github.com/linguithe/datetify/compare/v0.1.2...v0.1.3) (2024-05-24)
 
 ### [0.1.2](https://github.com/linguithe/datetify/compare/v0.1.1...v0.1.2) (2024-05-24)
