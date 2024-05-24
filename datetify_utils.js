@@ -105,7 +105,7 @@ function strptime(string, format) {
 function strftime(datetify, format) {
     validateParams(arguments, Datetify, 'string');
 
-    datetifyStr = format.replace(DateFormatCodes.FULL_YEAR, datetify.year)
+    const datetifyStr = format.replace(DateFormatCodes.FULL_YEAR, datetify.year)
                         .replace(DateFormatCodes.MONTH_AS_NUMBER, datetify.month + 1)
                         .replace(DateFormatCodes.ZERO_PADDED_DAY, datetify.day)
                         .replace(TimeFormatCodes.HOUR_24, datetify.hours)
